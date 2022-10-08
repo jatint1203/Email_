@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>EmailAnalytics-Hackathon</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Analyse your email with email tracker" name="keywords">
+    <meta content="This analyer will help you to get the best insights from your email" name="description">
+
+
+    {% load static %}
+
+    <link rel="icon" href="{% static 'img/favicon.ico'%}">
+
+
+
+    <link rel="preconnect" href="{% static 'https://fonts.googleapis.com'%}">
+    <link rel="preconnect" href="{% static 'https://fonts.gstatic.com'%}" crossorigin>
+    <link rel="stylesheet"
+        href="{% static 'https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap'%}">
+
+
+    <link rel="stylesheet"
+        href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css'%}">
+    <link rel="stylesheet"
+        href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+
+
+</head>
+
+<body>
+
+    <div class="container-fluid position-relative bg-white d-flex p-0">
+
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"> <img src="{% static 'img/icon/hashtag.svg' %}"
+                            style="width: 20px; height: 20px;" /> Email Analyser</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        {% comment %} <img class="rounded-circle" src="img/user.jpg" alt=""
+                            style="width: 40px; height: 40px;"> {% endcomment %}
+                        <img class="rounded-circle" src="{% static 'img/user.jpg' %}"
+                            style="width: 40px; height: 40px;" />
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">User name</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="index.html" class="nav-item nav-link"> <img class="rounded-circle"
+                            src="{% static 'img/icon/dashboard.svg' %}" style="width: 40px; height: 40px;" />
+                        Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><img
+                                class="rounded-circle" src="{% static 'img/icon/laptop.svg' %}"
+                                style="width: 40px; height: 40px;" /> Automate email</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="Schedule.html" class="dropdown-item">Schedule email</a>
+                        </div>
+                    </div>
+                    <a href="OpenAi.html" class="nav-item nav-link"><img class="rounded-circle"
+                            src="{% static 'img/icon/user-insights.svg' %}" style="width: 40px; height: 40px;" />
+                        Advanced insights</a>
+
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="content">
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <img class="rounded-circle" src="{% static 'img/icon/three.svg' %}"
+                        style="width: 40px; height: 40px;" />
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="img/user.jpg" alt=""
+                                        style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle" src="{% static 'img/icon/notification.svg' %}"
+                                style="width: 40px; height: 40px;" />
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle" src="{% static 'img/user.jpg' %}"
+                                style="width: 40px; height: 40px;" />
+                            <span class="d-none d-lg-inline-flex">User name</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="signin.html" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+
+                            <img src="{% static 'img/icon/email.svg' %}" style="width: 60px; height: 60px;" />
+                            <div class="ms-3">
+                                <p class="mb-2">Emails Received</p>
+                                <h6 class="mb-0">26</h6>
+                                <p></p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <!-- <i class="fa fa-chart-bar fa-3x text-primary"></i> -->
+                            <img src="{% static 'img/icon/email.svg' %}" style="width: 60px; height: 60px;" />
+                            <div class="ms-3">
+                                <p class="mb-2">Emails sents</p>
+                                <h6 class="mb-0">43</h6>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <!-- <i class="fa fa-chart-bar fa-3x text-primary"></i> -->
+                            {% comment %} <i class="fa fa-clock fa-3x text-danger"></i> {% endcomment %}
+                            <img src="{% static 'img/icon/clock.svg' %}" style="width: 50px; height: 60px;" />
+                            <div class="ms-3">
+                                <p class="mb-2">Average Response time</p>
+                                <h6 class="mb-0">2m 50s - Actual</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            {% comment %} <i class="fa fa-clock fa-3x text-danger"></i> {% endcomment %}
+                            <img src="{% static 'img/icon/clock.svg' %}" style="width: 60px; height: 60px;" />
+                            <div class="ms-3">
+                                <p class="mb-2">Total Work Time</p>
+                                <h6 class="mb-0">0 - Work Hours</h6>
+                                <!-- <p>Work hours</p> -->
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+
+
+
+            <!-- Synchronise starts -->
+
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+
+
+                    <div class="col-sm-14 col-md-8 col-xl-12">
+                        <div class="h-100 bg-light rounded p-4">
+                            <form action="" method="post">
+
+                                {% csrf_token %}
+
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <h6 class="mb-0">Synchronize</h6>
+                                    <button type="submit" value="sync" name="sync"
+                                        class="btn btn-primary ms-2 mb-2">Sync</button>
+                                </div>
+
+                                <div class="form">
+
+ 
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Title</th>
+                                                <th scope="col">Subject</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider">
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>{{sender1}}</td>
+                                                <td>{{subject1}}</td>
+                                                <td>{{body1}}</td>
+                                            </tr>
+                                            <tr> 
+                                                <th scope="row">2</th>
+                                                <td>{{sender2}}</td>
+                                                <td>{{subject2}}</td>
+                                                <td>{{body2}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>{{sender3}}</td>
+                                                <td>{{subject3}}</td>
+                                                <td>{{body3}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">4</th>
+                                                <td>{{sender4}}</td>
+                                                <td>{{subject4}}</td>
+                                                <td>{{body4}}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">5</th>
+                                                <td>{{sender5}}</td>
+                                                <td>{{subject5}}</td>
+                                                <td>{{body5}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br><br>
+
+                                <script>alert("{{sync}}")</script>
+                                <script>alert("{{phishing}}")</script>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Widgets End -->
+
+            <!-- Synchronise ends -->
+
+
+
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-light rounded p-4">
+                            <div class="d-flex mb-4">
+                                <h6 class="mb-0">Traffic</h6>
+                                <br><br>
+
+                                <!-- <section class="pie_chart_content">
+                                    <div class="overlay">
+                                        <div class="container">
+                                            <div class="row">
+
+                                                <div class="col-md-6">
+                                                    <div class="main_box">
+                                                        <br>
+                                                        <h1>Email pie chart</h1>
+                                                        <canvas id="mychart"></canvas>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="count_box">
+
+                                                        <div class="form-group">
+                                                            <label for="email-input">Email Sent & Received</label>
+                                                            <input type="text" value="1200"
+                                                                class="total-input form-control" readonly>
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <label for="sent-input">Sent</label>
+                                                            <input type="text" name="sent-input" value="0"
+                                                                class="sent-input form-control">
+                                                        </div>
+                                                        <br>
+                                                        <div class="form-group">
+                                                            <label for="received-input">Received</label>
+                                                            <input type="text" name="received-input" value="0"
+                                                                class="received-input form-control">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section> -->
+
+                                <div id="chartContainer" style="height: 300px; width: 100%; margin-top: 40px;"></div>
+
+                            </div>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sales Chart End -->
+
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy;<h4> Make it work, Make it right, Make it fast.</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+    </div>
+    <script>
+        // const sent = document.querySelector('.sent-input')
+        // const received = document.querySelector('.received-input')
+
+        // const ctx = document.getElementById('mychart').getContext('2d')
+        // let mychart = new Chart(ctx,{
+        //     type: 'pie',
+        //     data: {
+        //         labels: ['Sent','Received'],
+        //         datasets: [
+        //             {
+        //                 label: '# of votes',
+        //                 data: [0,0],
+        //                 backgroundColor: ['#2adace','#dd3b79'],
+        //                 borderwidth: 1
+        //             }
+        //         ]
+        //     }
+        // })
+
+        // const updateChartValue = (input,dataorder) =>{
+
+        //     input.addEventListener('change',e=>{
+        //         mychart.data.datasets[0].data[dataorder] = e.target.value
+        //         mychart.update()
+        //     })
+
+        // }
+
+        // updateChartValue(sent,1)
+        // updateChartValue(received,1)
+
+        window.onload = function () {
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                animationEnabled: true,
+                title: {
+                    text: "Email sent and received analyses"
+                },
+                data: [{
+                    type: "pie",
+                    startAngle: 240,
+                    yValueFormatString: "##0.00\"%\"",
+                    indexLabel: "{label} {y}",
+                    dataPoints: [
+                        { y: 80, label: "Sent" },
+                        { y: 20, label: "Received" },
+                        // { y: 7.06, label: "Baidu" },
+                        // { y: 4.91, label: "Yahoo" },
+                        // { y: 1.26, label: "Others" }
+                    ]
+                }]
+            });
+            chart.render();
+
+        }
+
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/chart/chart.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

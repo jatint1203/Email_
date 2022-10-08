@@ -1,0 +1,187 @@
+from email import message
+from pickle import TRUE
+from pyexpat.errors import messages
+from re import I
+from django.http import HttpResponse
+from django.shortcuts import render,redirect
+from requests import post
+import mysql.connector 
+from django.shortcuts import render
+from In_the_loop import email_features
+from django.contrib.auth.models import User
+
+
+def index(request):
+    print("ujjval")
+    if request.method == 'POST':
+        MyDict=request.POST
+        MyDict=dict(MyDict.lists()) 
+        print(MyDict)
+        print("mihihr") 
+        sync = MyDict["sync"][0]
+
+        if sync=='sync':
+            email_list, mail_ids, phishing_email= email_features.receive_emails()
+            print(mail_ids)
+            print(phishing_email)
+            print(type(phishing_email))
+            print("mihihr")
+            # phishing_email=phishing_email["is_spam"]
+
+            if phishing_email=='false':
+                phishing_email=("Emails are being checked and they are not spam Emails")
+
+            else:
+                phishing_email=("Emails are contating Spams")
+
+
+
+            email_data = { 
+                'total_mail' :mail_ids ,
+                'sync' : 'Message Sync Successful',
+
+                'phishing' : "Emails are being checked and they are not spam Emails",
+
+                'sender1': email_list[0][0],
+                'subject1': email_list[0][1],
+                'body1':email_list[0][2],
+
+                'sender2': email_list[1][0],
+                'subject2': email_list[1][1],
+                'body2':email_list[1][2], 
+ 
+
+                'sender3': email_list[2][0],
+                'subject3': email_list[2][1],
+                'body3':email_list[2][2],
+
+                'sender4': email_list[3][0],
+                'subject4': email_list[3][1],
+                'body4':email_list[3][2],
+
+                'sender5': email_list[4][0],
+                'subject5': email_list[4][1],
+                'body5':email_list[4][2],
+
+            }
+        
+            print(email_data)
+        # print(case_list[0]['key2'])
+       
+            return render(request, 'index.html', email_data)
+    print("ujjval   .dsfsdf")
+    return render(request, 'index.html') 
+
+
+
+def signin(request):
+    return render(request,'signin.html')
+
+def signup(request):
+    return render(request,'signup.html')
+
+
+
+
+def Schedule(request): 
+    if request.method == 'POST': 
+        print("jatin")
+        SaveDict=request.POST
+
+        SaveDict=dict(SaveDict.lists()) 
+        # print("data:",SaveDict)
+        # data: {''to': [''], 'from': [''], 'title': [''], 'message': [''], 'date': [''], 'time': ['']}
+        to = SaveDict["to"]
+        sender = 'jatintiwari123@outlook.com'
+        title = SaveDict["title"]
+        message = SaveDict["message"]
+        date = SaveDict["date"]
+        to = to[0]
+        
+        message = message[0]
+        title = title[0]
+        date = date[0]
+        print(type(message)) 
+        # sender = SaveDict["from"][0]
+        # message = SaveDict["message"][0] 
+        print(to,sender,title,message,date)
+        
+        myconn = mysql.connector.connect(host = "localhost", user = "root",passwd = "",database = "email_database", )  
+        #printing the connection object   
+        mycursor = myconn.cursor()
+        
+    
+        mysql_insert_query = "insert into email_data(sender,email_id,title,message,date) values(%s,%s,%s,%s,%s)"
+        record = [sender,to,title,message,date]
+        
+        # mycursor.execute("insert into email_data(sender,email_id,title,message,date) values({sender},'{to}','{title}','{message}','{date}')")
+        mycursor.execute(mysql_insert_query,record)
+        myconn.commit()
+ 
+    return render(request, 'Schedule.html') 
+
+
+def OpenAi(request):
+    
+
+    if request.method == 'POST':
+        MyDict=request.POST
+        # print(MyDict)
+
+        MyDict=dict(MyDict.lists()) 
+        print(MyDict)
+        title = MyDict["Title"]
+        # print(title)
+        title =title[0]
+        sender_email = MyDict["user_email"][0] 
+        receiver_email = MyDict["receiver_email"][0]
+        # auto = MyDict["auto"]
+
+        # print(auto)
+        
+
+       
+        # auto=MyDict["auto"][0]
+        # print(auto)
+            
+        body = email_features.openAI(title) #calling the funciton with title parameter
+                
+
+        
+        message_sent = email_features.SendEmail(sender_email, receiver_email, body,title)
+        print("Email SEnt")
+            
+            
+        
+
+
+        email_body = { 'title' : title, 'body' : body,  'user_email': sender_email, 'receiver_email' : receiver_email,  'message' : 'Auto Email Has been Generated'}
+
+
+        return render(request, 'OpenAi.html', email_body) #If something enters then this 
+
+
+    return render(request, 'OpenAi.html') #Or otherwise this will print
+
+def chart(request):
+    return render(request, 'chart.html')
+
+
+def HandleSignup(request):
+    if request.method == 'POST':
+        Username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+
+        # Create user
+        myUser = User.objects.create_user(Username,email,password)
+        myUser.fname = fname
+        myUser.lname = lname
+        myUser.save()
+        return redirect('/')
+
+    else:
+        return HttpResponse("404 Not Found")
+    
